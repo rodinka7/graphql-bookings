@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_USER": "karmabot",
+        "MONGO_PASSWORD": "2mpmg1LGBcbgs3WJ",
+        "MONGO_DB": "bookEvents",
+        "SECRET_TOKEN": "w9MoqNM8zGAx"
+    }
+}
