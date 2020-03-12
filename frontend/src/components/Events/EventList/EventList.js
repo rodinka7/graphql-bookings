@@ -8,7 +8,7 @@ const EventList = props => {
             key={event._id}
             userId={props.authUserId}
             onDetail={props.onViewDetail}
-            event
+            event={event}
         />
     )
     return (

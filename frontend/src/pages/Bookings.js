@@ -44,11 +44,11 @@ class BookingsPage extends Component {
             body: JSON.stringify(requestBody),
             headers: {
                 'Content-Type': 'application/json',
-                'Authentification': 'Bearer' + this.context.token
+                'Authorization': 'Bearer ' + this.context.token
             }
         })
         .then(res => {
-            if (res.status !== 200 || res.status !== 201)
+            if (res.status !== 200 && res.status !== 201)
                 throw new Error('Failed!!!');
             return res.json();
         })
@@ -83,11 +83,11 @@ class BookingsPage extends Component {
             body: JSON.stringify(requestBody),
             headers: {
                 'Content-Type': 'application/json',
-                'Authentification': 'Bearer' + this.context.token
+                'Authorization': 'Bearer ' + this.context.token
             }
         })
         .then(res => {
-            if (res.status !== 200 || res.status !== 201)
+            if (res.status !== 200 && res.status !== 201)
                 throw new Error('Failed!!!');
             return res.json();
         })
@@ -116,17 +116,17 @@ class BookingsPage extends Component {
             content = (
                 <>
                     <BookingControls
-                        changeOutputTypeHandler
+                        changeOutput={this.changeOutputTypeHandler}
                         activeOutputType={outputType}
                     />
                     <div>
                         {outputType === 'list' ? (
                             <BookingList
-                                bookings
+                                bookings={bookings}
                                 onDelete={this.deleteBookingHandler}
                             />
                         ) : (
-                            <BookingChart />
+                            <BookingChart bookings={bookings} />
                         )}
                     </div>
                 </>

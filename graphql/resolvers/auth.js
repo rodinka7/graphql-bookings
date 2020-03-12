@@ -39,7 +39,7 @@ module.exports = {
         });
 
         return {
-            iserId: user.id,
+            userId: user._id,
             token,
             tokenExpiration: 1 // 1 hour
         }

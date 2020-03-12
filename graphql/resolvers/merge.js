@@ -54,5 +54,5 @@ const user = async userId => {
     }
 };
 
-module.transformBooking = transformBooking;
-module.transformEvent = transformEvent;
+exports.transformBooking = transformBooking;
+exports.transformEvent = transformEvent;

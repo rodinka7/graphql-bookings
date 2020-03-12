@@ -23,13 +23,13 @@ module.exports = {
             event
         });
         const response = await booking.save();
-        return transformEvent(response);
+        return transformBooking(response);
     },
     cancelBooking: async (args, req) => {
         if (!req.isAuth)
             throw new Error('You are not authentificated!');
         try {
-            const booking = await Booking.findById(args.bookingId);
+            const booking = await Booking.findById(args.bookingId).populate('event');
             const event = transformEvent(booking.event);
             await Booking.deleteOne({_id: args.bookingId});
             return event;

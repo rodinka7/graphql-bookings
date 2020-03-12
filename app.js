@@ -2,12 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const schema = require('./graphql/schema');
 const rootValue = require('./graphql/resolvers');
 const isAuth = require('./middleware/auth');
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -29,8 +31,11 @@ app.use('/graphql', graphqlHttp({
 }));
 
 mongoose.connect(
-    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-y78lp.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`
-    )
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-y78lp.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
     .then(() => {
         const server = app.listen(process.env.PORT, () => {
             console.log(`The server is running on ${server.address().port} port`);

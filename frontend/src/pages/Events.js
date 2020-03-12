@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from '../components/Modal/Modal';
 import Backdrop from '../components/Backdrop/Backdrop';
-import EventList from '../components/Events/Eventlist/EventList';
+import EventList from '../components/Events/EventList/EventList';
 import Spinner from '../components/Spinner/Spinner';
 import AuthContext from '../context/auth';
 
@@ -85,11 +85,11 @@ class EventsPage extends Component {
             body: JSON.stringify(requestBody),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             }
         })
         .then(res => {
-            if (res.status !== 200 || res.status !== 201)
+            if (res.status !== 200 && res.status !== 201)
                 throw new Error('Failed!!!');
             return res.json();
         })
@@ -145,7 +145,7 @@ class EventsPage extends Component {
             }
         })
         .then(res => {
-            if (res.status !== 200 || res.status !== 201)
+            if (res.status !== 200 && res.status !== 201)
                 throw new Error('Failed!!!');
             return res.json();
         })
@@ -163,7 +163,7 @@ class EventsPage extends Component {
 
     showDetailHandler = eventId => {
         this.setState(prevState => ({
-            selectedEvent: prevState.events.find(e => e._id === eventId);
+            selectedEvent: prevState.events.find(e => e._id === eventId)
         }))
     };
 
@@ -194,11 +194,11 @@ class EventsPage extends Component {
             body: JSON.stringify(requestBody),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             }
         })
         .then(res => {
-            if (res.status !== 200 || res.status !== 201)
+            if (res.status !== 200 && res.status !== 201)
                 throw new Error('Failed!!!');
             return res.json();
         })

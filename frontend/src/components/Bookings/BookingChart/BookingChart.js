@@ -4,15 +4,15 @@ import { Bar } from 'react-chartjs';
 import './BookingChart.css';
 
 const BOOKING_BUCKETS = {
-    'Cheap': {
+    Cheap: {
         min: 0,
         max: 100
     },
-    'Normal': {
+    Normal: {
         min: 100,
         max: 200
     },
-    'Expensive': {
+    Expensive: {
         min: 200,
         max: 1000000
     }
@@ -49,7 +49,7 @@ const BookingChart = props => {
 
     return (
         <div className="booking__chart">
-            <Bar options={chartData} />
+            <Bar data={chartData} />
         </div>
     )
 }

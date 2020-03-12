@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import AuthPage from './pages/Auth';
 import BookingsPage from './pages/Bookings';
 import EventsPage from './pages/Events';
-import MainNavigation from './'
-import AuthContext from './components/context/auth';
+import MainNavigation from './components/Navigation/MainNavigation';
+import AuthContext from './context/auth';
 
 import './App.css';
 
@@ -15,7 +15,7 @@ class App extends Component {
     userId: null
   };
 
-  login = (userId, token, tokenExpiration) => {
+  login = ({userId, token, tokenExpiration}) => {
     this.setState({token, userId});
   };
 

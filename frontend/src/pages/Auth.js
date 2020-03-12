@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthContext from '../components/context/auth';
+import AuthContext from '../context/auth';
 
 import './Auth.css';
 
@@ -41,7 +41,7 @@ class AuthPage extends Component {
             `
         } : {
             query: `
-                mutation CreateUser($emeil: String!, $password: String!) {
+                mutation CreateUser($email: String!, $password: String!) {
                     createUser(userInput: {
                         email: $email,
                         password: $password
@@ -66,7 +66,7 @@ class AuthPage extends Component {
             }
         })
         .then(res => {
-            if (res.status !== 200 || res.status !== 201)
+            if (res.status !== 200 && res.status !== 201)
                 throw new Error('Failed!!!');
             return res.json();
         })
@@ -90,8 +90,8 @@ class AuthPage extends Component {
                     <input type="password" id="password" ref={this.passwordEl} />
                 </div>
                 <div className="form-actions">
-                    <button type="button">Switch to Signup</button>
-                    <button type="submit" onClick={this.switchModeHandler}>Submit to {this.state.isLogin ? 'SignUp' : 'Login'}</button>
+                    <button type="submit">Submit</button>
+                    <button type="button" onClick={this.switchModeHandler}>Submit to {this.state.isLogin ? 'SignUp' : 'Login'}</button>
                 </div>
             </form>
         )
